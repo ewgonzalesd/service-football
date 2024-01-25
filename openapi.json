@@ -1,0 +1,126 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "ms-ne-indentificacion-biometrica-integracion-pga",
+    "description": "Servicio valida integracion biometria",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://apimgmt-pacificodesa.azure-api.net/",
+      "description": "Integracion"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Aplicaciones",
+      "description": "Todo sobre la integracion de canales con biometria"
+    }
+  ],
+  "paths": {
+    "/aplicaciones": {
+      "get": {
+        "tags": [
+          "Aplicaciones"
+        ],
+        "summary": "Listado Aplicaciones",
+        "description": "Listado aplicaciones integrados biometria.",
+        "operationId": "listApplications",
+        "responses": {
+          "200": {
+            "description": "successful operation'",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AplicacionesResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Aplicaciones"
+        ],
+        "summary": "Crear Aplicacion",
+        "description": "Crear aplicacion integrado biometria.",
+        "operationId": "createApplication",
+        "responses": {
+          "202": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Aplicaciones"
+        ],
+        "summary": "Actualizar Aplicacion",
+        "description": "Actualizar aplicacion integrado biometria.",
+        "operationId": "updateApplication",
+        "responses": {
+          "204": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AplicacionesResponse": {
+        "type": "object",
+        "properties": {
+          "datos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AplicacionResponse"
+            }
+          }
+        }
+      },
+      "AplicacionResponse": {
+        "type": "object",
+        "properties": {
+          "urlRedireccion": {
+            "type": "string"
+          },
+          "nombreCanal": {
+            "type": "string"
+          },
+          "aplicacionId": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
